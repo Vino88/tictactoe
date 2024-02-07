@@ -13,7 +13,6 @@
 
 <div th:insert="fragments/header :: header"></div>
 <div class="game-area card">
-  <div class="card-body">
     <h4 class="game-status">
       <th:block th:switch="${playStatus}">
         <div th:case="'IN_PROGRESS'" class="alert alert-light" role="alert">
@@ -42,6 +41,13 @@
         </div>
       </th:block>
     </h4>
+    <div class="toast" id="toastMessage" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="false">
+      <div class="toast-header">
+        <strong class="me-auto">Validation Error</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+      <div class="toast-body" id="toastBody" style="color: red"></div>
+    </div>
     <table class="board">
       <tr th:each="row, rowIter : ${board}" class="board-row">
         <td th:each="tile, tileIter : ${row}">
@@ -54,11 +60,9 @@
         </td>
       </tr>
     </table>
-
     <form id="form_mark_tile" th:action="@{/}" method="POST" class="form-inline">
       <div class="text">
-        <label><input id="board_size" name="board_size" type="number" placeholder="3" th:field="${boardSize}" minlength="3"/>  Board Size </label>
-        <span th:if="${#fields.hasErrors('boardSize')}" th:errors="${boardSize}" class="error"></span><br>
+        <label><input id="board_size" name="board_size" type="number" placeholder="3"/>  Board Size </label>
       </div>
 
       <div class="btn-new-game-wrap">
@@ -74,8 +78,6 @@
       <input id="new_game" name="new_game" type="hidden" value=""/>
     </form>
   </div>
-</div>
-
 <div th:insert="fragments/footer :: footer"></div>
 
 </body>
