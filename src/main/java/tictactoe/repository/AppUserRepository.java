@@ -1,8 +1,9 @@
-package tictactoe.user.entity;
+package tictactoe.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+import tictactoe.entity.AppUser;
 
 @Transactional(readOnly = true)
 @Repository

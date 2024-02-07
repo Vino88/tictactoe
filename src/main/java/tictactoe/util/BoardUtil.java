@@ -1,11 +1,11 @@
-package tictactoe.game;
+package tictactoe.util;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
-class BoardUtil {
+public class BoardUtil {
 
     public static List<List<String>> createEmpty(int boardSize) {
         List<List<String>> rows = new ArrayList<>();

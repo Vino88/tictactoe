@@ -1,9 +1,8 @@
-package tictactoe.game.entity;
+package tictactoe.entity;
 
 import com.vladmihalcea.hibernate.type.json.JsonType;
 import org.hibernate.annotations.Type;
 import org.hibernate.annotations.TypeDef;
-import tictactoe.user.entity.AppUser;
 
 import javax.persistence.*;
 import java.util.List;

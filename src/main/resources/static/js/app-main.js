@@ -10,8 +10,6 @@ $(document).ready(function () {
   $("#btn-new-game").click(function (event) {
     $("#new_game").val("yes");
     $("#form_mark_tile").submit();
-    $("#board_size").submit();
-    console.log("#board_size");
   });
 
   $("#link-user-logout").click(function (event) {

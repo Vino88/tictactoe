@@ -5,9 +5,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
-import tictactoe.user.AppUserDetailsService;
-import tictactoe.user.entity.AppUser;
-import tictactoe.user.entity.AppUserRepository;
+import tictactoe.service.AppUserDetailsService;
+import tictactoe.entity.AppUser;
+import tictactoe.repository.AppUserRepository;
 
 @Component
 public class DatabaseLoader implements CommandLineRunner {

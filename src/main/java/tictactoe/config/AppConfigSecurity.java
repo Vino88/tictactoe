@@ -6,7 +6,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import tictactoe.user.AppUserDetailsService;
+import tictactoe.service.AppUserDetailsService;
 
 @Configuration
 @EnableWebSecurity
@@ -29,7 +29,7 @@ public class AppConfigSecurity extends WebSecurityConfigurerAdapter {
         //@formatter:off
         http
                 .authorizeRequests()
-                    .antMatchers("/css/*", "/images/*", "/js/*").permitAll()
+                    .antMatchers("/css/*", "/images/*", "/js/*", "/audio/*").permitAll()
                     .anyRequest().authenticated()
                     .and()
                 .formLogin()

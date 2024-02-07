@@ -20,12 +20,24 @@
           Your turn. Click a square to place an <span th:text="${playerGoFirst ?  'X' : 'O'}"></span>.
         </div>
         <div th:case="'WON'" class="alert alert-success" role="alert">
-          You've won! A sound victory. 🎉
+          <audio id="audio" autoplay style="display:none;">
+            <source th:src="@{/audio/game-bonus-144751.mp3}" type="audio/mpeg">
+            Your browser does not support the audio element.
+          </audio>
+            You've won! A sound victory. 🎉
         </div>
         <div th:case="'LOST'" class="alert alert-danger" role="alert">
+          <audio id="audio" autoplay style="display:none;">
+            <source th:src="@{/audio/failure-drum-sound-effect-2-7184.mp3}" type="audio/mpeg">
+            Your browser does not support the audio element.
+          </audio>
           You've lost. Better luck next time!
         </div>
         <div th:case="'DRAW'" class="alert alert-primary" role="alert">
+          <audio id="audio" autoplay style="display:none;">
+            <source th:src="@{/audio/sword-hit-7160.mp3}" type="audio/mpeg">
+            Your browser does not support the audio element.
+          </audio>
           Mheh! A smelly draw. 💩
         </div>
       </th:block>
@@ -45,14 +57,16 @@
 
     <form id="form_mark_tile" th:action="@{/}" method="POST" class="form-inline">
       <div class="text">
-        <label><input id="board_size" name="board_size" type="text" placeholder="3"/>  Board Size </label>
-      </div>
-      <div class="checkbox">
-        <label><input name="player_go_first" type="checkbox" th:checked="${playerGoFirst}"/> Play First</label>
+        <label><input id="board_size" name="board_size" type="number" placeholder="3" th:field="${boardSize}" minlength="3"/>  Board Size </label>
+        <span th:if="${#fields.hasErrors('boardSize')}" th:errors="${boardSize}" class="error"></span><br>
       </div>
 
       <div class="btn-new-game-wrap">
         <button id="btn-new-game" class="btn btn-success btn-lg" role="button">New Game</button>
+        <audio id="audio" autoplay style="display:none;">
+          <source th:src="@{/audio/game-start-6104.mp3}" type="audio/mpeg">
+          Your browser does not support the audio element.
+        </audio>
       </div>
 
       <input id="is_game_over" type="hidden" th:value="${playStatus != 'IN_PROGRESS'}"/>

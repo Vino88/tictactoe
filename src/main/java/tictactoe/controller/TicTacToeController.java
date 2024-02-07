@@ -1,4 +1,4 @@
-package tictactoe;
+package tictactoe.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -7,11 +7,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import tictactoe.game.GameService;
-import tictactoe.game.entity.Game;
-import tictactoe.game.entity.Game.PlayerType;
-import tictactoe.user.entity.AppUser;
-import tictactoe.user.entity.AppUserRepository;
+import tictactoe.service.GameService;
+import tictactoe.entity.Game;
+import tictactoe.entity.Game.PlayerType;
+import tictactoe.entity.AppUser;
+import tictactoe.repository.AppUserRepository;
 
 import java.security.Principal;
 
@@ -53,7 +53,6 @@ public class TicTacToeController {
             Principal principal,
             @RequestParam(value = "tile_id", required = false) String tileId,
             @RequestParam(value = "new_game", required = false, defaultValue = "false") boolean newGame,
-            @RequestParam(value = "player_go_first", required = false, defaultValue = "false") boolean playerGoFirst,
             @RequestParam(value = "board_size", required = false, defaultValue = "0") int boardSize
     ) {
         try {
@@ -61,12 +60,7 @@ public class TicTacToeController {
 
             Game game;
             if (newGame) {
-                game = gameService.create(appUser, playerGoFirst, boardSize);
-
-                if (!playerGoFirst) {
-                    // give computer a small advantage by always placing X in the center as its first move
-                    gameService.takeTurn(game, "1-1");
-                }
+                game = gameService.create(appUser, true, boardSize);
             } else {
                 game = gameService.getLastGame(appUser);
                 gameService.takeTurn(game, tileId); // Player Turn
@@ -105,6 +99,7 @@ public class TicTacToeController {
         model.addAttribute("playerGoFirst", playerGoFirst);
         model.addAttribute("playStatus", playerStatus);
         model.addAttribute("board", game.getRows());
+        model.addAttribute("boardSize", game.getBoardSize());
     }
 
     private AppUser getAppUser(Principal principal) {

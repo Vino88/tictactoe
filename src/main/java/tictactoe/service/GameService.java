@@ -1,14 +1,16 @@
-package tictactoe.game;
+package tictactoe.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import tictactoe.game.entity.Game;
-import tictactoe.game.entity.Game.GameState;
-import tictactoe.game.entity.Game.PlayerNumber;
-import tictactoe.game.entity.Game.PlayerType;
-import tictactoe.game.entity.GameRepository;
-import tictactoe.user.entity.AppUser;
+import tictactoe.entity.Game;
+import tictactoe.entity.Game.GameState;
+import tictactoe.entity.Game.PlayerNumber;
+import tictactoe.entity.Game.PlayerType;
+import tictactoe.repository.GameRepository;
+import tictactoe.entity.AppUser;
+import tictactoe.util.BoardTile;
+import tictactoe.util.BoardUtil;
 
 import java.util.List;
 

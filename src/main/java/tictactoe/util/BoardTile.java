@@ -1,6 +1,6 @@
-package tictactoe.game;
+package tictactoe.util;
 
-enum BoardTile {
+public enum BoardTile {
 
     EMPTY(""),
     X("x"),

@@ -1,4 +1,4 @@
-package tictactoe.user.entity;
+package tictactoe.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
